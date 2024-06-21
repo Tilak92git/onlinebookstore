@@ -14,7 +14,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: '57346c3c-c192-4442-bc9b-d47a22c41493', path: '', url: 'http://35.153.101.241:8080')], contextPath: 'git tomcat', onFailure: false, war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: '57346c3c-c192-4442-bc9b-d47a22c41493', path: '', url: 'http://54.211.173.84:8080')], contextPath: 'git tomcat', onFailure: false, war: '**/*.war'
             }
         }
     }
