@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('clone') {
+            steps {
+               git branch: 'main', url: 'https://github.com/Tilak92git/onlinebookstore.git' 
+            }
+        }
+        stage('build') {
+            steps {
+               sh 'mvn clean package' 
+            }
+        }
+         stage('deploy') {
+            steps {
+               deploy adapters: [tomcat9(credentialsId: 'e5e2520d-8e0a-405c-b828-f4e2d0529da2', path: '', url: 'http://20.193.142.143:8080')], contextPath: 'new1', war: '**/*.war' 
+            }
+        }
+    }
+}
